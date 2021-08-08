@@ -20,3 +20,7 @@ def binary_search(nums, val):
 
 print(factorial(5))
 print(binary_search(list(range(0, 101, 2)), 100))
+
+a_dict = {1: 'foo', True: 'bar'}
+print(a_dict)
+foo = [3, 1, 2]
