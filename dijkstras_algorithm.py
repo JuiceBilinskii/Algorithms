@@ -29,15 +29,41 @@ def dijkstras_algorithm(graph, start, goal):
         accessed.append(node)
         node = find_lowest_cost_node()
 
-    print(costs)
-    print(parents)
+    return costs, parents
 
+
+# weighted_graph = {
+#     'Start': {'A': 5, 'B': 2},
+#     'A': {'C': 4, 'D': 2},
+#     'B': {'A': 8, 'D': 7},
+#     'C': {'D': 6, 'Fin': 3},
+#     'D': {'Fin': 1},
+#     'Fin': {},
+# }
+
+# weighted_graph = {
+#     'Start': {'A': 10},
+#     'A': {'B': 20},
+#     'B': {'C': 1, 'Fin': 30},
+#     'C': {'A': 1},
+#     'Fin': {},
+# }
 
 weighted_graph = {
-    'Start': {'A': 6, 'B': 2},
-    'A': {'Fin': 1},
-    'B': {'A': 3, 'Fin': 5},
+    'Start': {'A': 2, 'B': 2},
+    'A': {'B': 2},
+    'B': {'C': 2, 'Fin': 2},
+    'C': {'A': -1, 'Fin': 2},
     'Fin': {},
 }
 
-dijkstras_algorithm(weighted_graph, 'A', 'Fin')
+start, goal = 'Start', 'Fin'
+costs, parents = dijkstras_algorithm(weighted_graph, start, goal)
+
+path = [goal]
+node = parents[goal]
+while node is not None:
+    path.append(node)
+    node = parents[node]
+print(path[::-1])
+print(costs[goal])
